@@ -22,7 +22,7 @@ RSpec.describe "Logging In" do
   end
 
   it "cannot log in with bad credentials" do
-    user = User.create(username: "funbucket13", password: "test")
+    user = User.create(username: "abby123", email: "abby@example.com", password: "test", password_confirmation: "test")
   
     visit login_path
   
@@ -33,6 +33,6 @@ RSpec.describe "Logging In" do
   
     expect(current_path).to eq(login_path)
   
-    expect(page).to have_content("Username or password incorrect")
+    expect(page).to have_content("Username or password invalid")
   end
 end

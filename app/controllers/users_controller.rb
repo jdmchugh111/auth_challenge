@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome, #{user.username}!"
       redirect_to user_path(user)
     else
-      flash[:error] = "Username or password incorrect"
+      flash[:error] = "Username or password invalid"
       render :login_form
     end
   end
