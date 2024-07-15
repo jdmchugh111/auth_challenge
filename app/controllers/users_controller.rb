@@ -16,6 +16,20 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def login_form
+  end
+
+  def login
+    user = User.find_by(username: params[:username])
+    if user != nil && user.authenticate(params[:password])
+      flash[:success] = "Welcome, #{user.username}!"
+      redirect_to user_path(user)
+    else
+      flash[:error] = "Username or password incorrect"
+      render :login_form
+    end
+  end
+
   private
 
   def user_params

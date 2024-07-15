@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   get '/register', to: 'users#new'
 
   resources :users, only: [:create, :show]
+
+  get "/login", to: "users#login_form"
+  post "/login", to: "users#login"
 end
